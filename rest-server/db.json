@@ -9,7 +9,7 @@
       { "id": 7, "firstName": "Matthew", "lastName": "Archer", "profession": "Change control", "companyId": 3 },
       { "id": 8, "firstName": "Adam", "lastName": "Hammer", "profession": "DevOps", "companyId": 1 }
     ],
-    "company": [
+    "companies": [
       { "id": 1, "name": "1901Group", "description": "Devshop for days" },
       { "id": 2, "name": "Boeing", "description": "Flight and Government things" },
       { "id": 3, "name": "Apple", "description": "$1000 monitor stands" },
