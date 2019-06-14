@@ -1,0 +1,15 @@
+{
+  "name": "rest-server",
+  "version": "1.0.0",
+  "description": "Rest Server used to demo fetching data from a rest server into GraphQL",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "json-server --watch db.json"
+  },
+  "author": "Dakota Gallimore",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.15.0"
+  }
+}
