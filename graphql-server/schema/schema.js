@@ -22,7 +22,15 @@ const PersonType = new GraphQLObjectType({
         id: { type: GraphQLInt },
         firstName: { type: GraphQLString },
         lastName: { type: GraphQLString },
-        profession: { type: GraphQLString }
+        profession: { type: GraphQLString },
+        company: { 
+            type: CompanyType,
+            resolve(parentValue, args) {
+                return axios.get(`http://localhost:3000/companies/${parentValue.companyId}`).then(
+                    resp => resp.data
+                )
+            }
+        }
     }
 });
 
