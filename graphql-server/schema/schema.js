@@ -7,6 +7,7 @@ const restUrl = `${restServerUrl}:${restServerPort}`;
 
 const {
     GraphQLObjectType,
+    GraphQLNonNull,
     GraphQLSchema,
     GraphQLString,
     GraphQLList,
@@ -72,6 +73,27 @@ const RootQuery = new GraphQLObjectType({
     }
 });
 
+const mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addPerson: {
+            type: UserType,
+            args: {
+                firstName: { type: new GraphQLNonNull(GraphQLString) },
+                lastName: { type: new GraphQLNonNull(GraphQLString) },
+                profession: { type: GraphQLString },
+                companyId: { type: GraphQLInt }
+            },
+            resolve(parentValue, { firstName, lastName }) {
+                return axios.post(`${restUrl}/people`, { firstName, lastName }).then(
+                    resp => resp.data
+                );
+            }
+        }
+    }
+})
+
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation
 });
