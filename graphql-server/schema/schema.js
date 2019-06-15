@@ -7,6 +7,7 @@ const restUrl = `${restServerUrl}:${restServerPort}`;
 
 const {
     GraphQLObjectType,
+    GraphQLSchema,
     GraphQLString,
     GraphQLList,
     GraphQLInt,
@@ -69,4 +70,8 @@ const RootQuery = new GraphQLObjectType({
             }
         }
     }
+});
+
+module.exports = new GraphQLSchema({
+    query: RootQuery
 });
