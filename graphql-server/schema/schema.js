@@ -55,7 +55,7 @@ const RootQuery = new GraphQLObjectType({
             type: PersonType,
             args: { id: { type: GraphQLInt } },
             resolve(parentValue, args) {
-                return axios.get(`${restUrl}/persons/${args.id}`).then(
+                return axios.get(`${restUrl}/people/${args.id}`).then(
                     resp => resp.data
                 )
             }
