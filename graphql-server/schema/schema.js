@@ -8,7 +8,8 @@ const restUrl = `${restServerUrl}:${restServerPort}`;
 const {
     GraphQLObjectType,
     GraphQLString,
-    GraphQLInt
+    GraphQLList,
+    GraphQLInt,
 } = graphql;
 
 const CompanyType = new GraphQLObjectType({
@@ -16,7 +17,15 @@ const CompanyType = new GraphQLObjectType({
     fields: {
         id: { type: GraphQLInt },
         name: { type: GraphQLString },
-        description: { type: GraphQLString }
+        description: { type: GraphQLString },
+        users: {
+            type: new GraphQLList(UserType),
+            resolve(parentValue, args) {
+                return axios.get(`${restUrl}/companies/${parentValue.id}/users`).then(
+                    resp => resp.data
+                );
+            }
+        }
     }
 });
 
