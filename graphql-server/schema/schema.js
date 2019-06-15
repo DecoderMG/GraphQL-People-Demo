@@ -14,7 +14,7 @@ const {
 
 const CompanyType = new GraphQLObjectType({
     name: 'Company',
-    fields: {
+    fields: () => ({
         id: { type: GraphQLInt },
         name: { type: GraphQLString },
         description: { type: GraphQLString },
@@ -26,12 +26,12 @@ const CompanyType = new GraphQLObjectType({
                 );
             }
         }
-    }
+    })
 });
 
 const PersonType = new GraphQLObjectType({
     name: 'Person',
-    fields: {
+    fields: () => ({
         id: { type: GraphQLInt },
         firstName: { type: GraphQLString },
         lastName: { type: GraphQLString },
@@ -44,7 +44,7 @@ const PersonType = new GraphQLObjectType({
                 )
             }
         }
-    }
+    })
 });
 
 const RootQuery = new GraphQLObjectType({
