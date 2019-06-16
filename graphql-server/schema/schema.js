@@ -20,10 +20,10 @@ const CompanyType = new GraphQLObjectType({
         id: { type: GraphQLInt },
         name: { type: GraphQLString },
         description: { type: GraphQLString },
-        users: {
-            type: new GraphQLList(UserType),
+        people: {
+            type: new GraphQLList(PersonType),
             resolve(parentValue, args) {
-                return axios.get(`${restUrl}/companies/${parentValue.id}/users`).then(
+                return axios.get(`${restUrl}/companies/${parentValue.id}/people`).then(
                     resp => resp.data
                 );
             }
