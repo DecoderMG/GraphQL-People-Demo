@@ -89,6 +89,17 @@ const mutation = new GraphQLObjectType({
                     resp => resp.data
                 );
             }
+        },
+        deletePerson: {
+            type: PersonType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLInt) }
+            },
+            resolve(parentValue, { id }) {
+                return axios.delete(`${restUrl}/people/${id}`).then(
+                    resp => resp.data
+                )
+            }
         }
     }
 })
